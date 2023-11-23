@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./components/Header";
 import List from "./components/List";
 import Note from "./components/Note";
+
 import Search from "./components/Search";
 
 function App() {
@@ -10,8 +11,6 @@ function App() {
       <div className="page">
         <Header />
         <Note />
-        <Search />
-        <List />
       </div>
     </div>
   );

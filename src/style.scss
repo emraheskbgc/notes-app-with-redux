@@ -107,7 +107,7 @@ input:focus, textarea:focus{
 .colors button{
     padding: 30px;
     margin: 5px;
-    border: none;
+    border: 0;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -127,9 +127,7 @@ input:focus, textarea:focus{
   .yellow {
     background-color: #ffeb3b;
   }
-  .orange {
-    background-color: #ff8f00;
-  }
+ 
 
 .search{
     display: flex;
@@ -150,6 +148,7 @@ input:focus, textarea:focus{
 }
 .search input::placeholder{
     color: white;
+  
 }
 .search input:focus{
     outline: none;
