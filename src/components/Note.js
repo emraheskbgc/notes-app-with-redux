@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import List from "./List";
-
+import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
 import { addNewNote } from "../redux/notes/noteSlice";
-import { BsCheckCircle } from "react-icons/bs";
 
 const Note = () => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [color, setColor] = useState("default");
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleTitleChange = (e) => {
     e.preventDefault();
@@ -25,11 +25,18 @@ const Note = () => {
 
   const handleAddNote = () => {
     const newNote = {
-      id: "3",
+      id: uuidv4(),
       title: title,
       description: description,
       color: color,
     };
+    if (title === "" || description === "" || color === "default") {
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 2000);
+      return;
+    }
     dispatch(addNewNote(newNote));
     setTitle("");
     setDescription("");
@@ -65,44 +72,39 @@ const Note = () => {
           <h5>Chose Color</h5>
           <div className="colors">
             <button
-              className="pink"
+              className={`pink ${color === "#e91e63" ? "focus-ring " : ""}`}
               onClick={() => {
                 handleColorChange("#e91e63");
               }}
-            >
-              {color === "#e91e63" ? <BsCheckCircle /> : ""}
-            </button>
+            ></button>
             <button
-              className="purple"
+              className={`purple ${color === "#9c27b0" ? "focus-ring " : ""}`}
               onClick={() => {
                 handleColorChange("#9c27b0");
               }}
-            >
-              {color === "#9c27b0" ? <BsCheckCircle /> : ""}
-            </button>
+            ></button>
             <button
-              className="yellow"
+              className={`yellow ${color === "#ffeb3b" ? "focus-ring" : ""}`}
               onClick={() => handleColorChange("#ffeb3b")}
-            >
-              {color === "#ffeb3b" ? <BsCheckCircle /> : ""}
-            </button>
+            ></button>
             <button
-              className="blue"
+              className={`blue ${color === "#1e88e5" ? "focus-ring" : ""}`}
               onClick={() => handleColorChange("#1e88e5")}
-            >
-              {color === "#1e88e5" ? <BsCheckCircle /> : ""}
-            </button>
+            ></button>
             <button
-              className="green"
+              className={`green ${color === "#1dca1d" ? "focus-ring" : ""}`}
               onClick={() => handleColorChange("#1dca1d")}
-            >
-              {color === "#1dca1d" ? <BsCheckCircle /> : ""}
-            </button>
+            ></button>
           </div>
           <div>
             <button className=" btnAdd" onClick={handleAddNote}>
               ADD
             </button>
+            {showAlert && (
+              <div className="alert alert-danger">
+                Lütfen İlgili Alanları Doldurun !
+              </div>
+            )}
           </div>
         </div>
       </div>

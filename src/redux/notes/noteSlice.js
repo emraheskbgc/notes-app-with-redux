@@ -8,13 +8,13 @@ export const notesSlice = createSlice({
         id: "1",
         title: "deneme",
         description: "deneme açıklaması",
-        color: "red",
+        color: "#9c27b0",
       },
       {
         id: "2",
         title: "deneme",
         description: "deneme açıklaması",
-        color: "red",
+        color: "#ffeb3b",
       },
     ],
     searchNote: "",
@@ -27,8 +27,12 @@ export const notesSlice = createSlice({
     setSearchNote: (state, action) => {
       state.searchNote = action.payload;
     },
+    removeNote: (state, action) => {
+      const noteId = action.payload;
+      state.items = state.items.filter((item) => item.id !== noteId);
+    },
   },
 });
 
-export const { addNewNote, setSearchNote } = notesSlice.actions;
+export const { addNewNote, setSearchNote, removeNote } = notesSlice.actions;
 export default notesSlice.reducer;
