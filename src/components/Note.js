@@ -44,9 +44,9 @@ const Note = () => {
   };
 
   return (
-    <>
-      <div className=" mainDiv ">
-        <div className="left">
+    <div className="container">
+      <div className=" mainDiv row">
+        <div className="left col-md-6">
           <div>
             <input
               value={title}
@@ -68,7 +68,7 @@ const Note = () => {
           </div>
         </div>
 
-        <div className="right">
+        <div className="right col-md-6">
           <h5>Chose Color</h5>
           <div className="colors">
             <button
@@ -110,7 +110,7 @@ const Note = () => {
       </div>
 
       <List />
-    </>
+    </div>
   );
 };
 
