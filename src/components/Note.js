@@ -88,7 +88,7 @@ const Note = () => {
               onClick={() => handleColorChange("#ffeb3b")}
             ></button>
             <button
-              className={`blue ${color === "#1e88e5" ? "focus-ring" : ""}`}
+              className={`blue ${color === "#1e88e5" ? "focus-ring " : ""}`}
               onClick={() => handleColorChange("#1e88e5")}
             ></button>
             <button
